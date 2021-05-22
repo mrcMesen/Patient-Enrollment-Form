@@ -9,3 +9,22 @@
     }
   }
 }
+
+@layer components {
+  .label-input {
+    @apply transition-all transform;
+  }
+  .input:focus + .label-input,
+  .input:not(:placeholder-shown) + .label-input {
+    @apply text-xs opacity-50 top-0 -translate-y-2;
+  }
+  .input:focus + .label-input {
+    @apply text-gray-900;
+  }
+  .input:focus ~ .input-line {
+    @apply border-gray-700;
+  }
+  .btn-primary {
+    @apply bg-green-900 px-6 py-2 text-white rounded;
+  }
+}
