@@ -1,7 +1,14 @@
-import '../styles/globals.css';
+import { ReactElement } from 'react';
 import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+import { Layout } from '@components/Layout';
+import '../styles/globals.css';
+
+function MyApp({ Component, pageProps }: AppProps): ReactElement {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 export default MyApp;

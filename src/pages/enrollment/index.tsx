@@ -1,11 +1,8 @@
-import Head from 'next/head';
+import { ReactElement } from 'react';
 
-export default function PersonalData() {
+export default function PersonalData(): ReactElement {
   return (
     <>
-      <Head>
-        <title>Enrollment - Personal Data</title>
-      </Head>
       <div>Enrollment</div>
     </>
   );
