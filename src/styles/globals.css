@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  select,
+  input[type='checkbox'] {
+    @apply bg-transparent shadow-sm border rounded appearance-none outline-none;
+  }
+  ,
+  input[type='checkbox']:checked {
+    @apply bg-green-900 text-white;
+  }
+}
+
 @layer utilities {
   @variants responsive {
     .flex-full-center {
