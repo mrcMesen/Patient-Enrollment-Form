@@ -9,7 +9,7 @@ For Parsley Health
 
 ## Image Demo - Responsive (Mobile)
 
-![Responsive Demo](./demo/demo-responsive.png)
+<img src="./demo/demo-responsive.png" alt="Responsive Demo" width="300" height="600">
 
 ## Technologies used
 
