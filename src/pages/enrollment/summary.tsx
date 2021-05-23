@@ -4,9 +4,11 @@ import { Title } from '@components/base/Title';
 import { Subtitle } from '@components/base/Subtitle';
 import { DataItem } from '@components/base/DataItem';
 import { ConditionCard } from '@components/ConditionCard';
-import NavigateButtons from '@components/NavigateButtons';
+import { NavigateButtons } from '@components/NavigateButtons';
+import { useValidateStep } from '@hooks/useValidateStep';
 
 export default function Summary(): ReactElement {
+  useValidateStep('Summary');
   return (
     <>
       <Title text="Summary" />

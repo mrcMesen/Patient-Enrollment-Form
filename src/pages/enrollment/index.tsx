@@ -1,36 +1,61 @@
 import { ReactElement } from 'react';
 import { Input } from '@components/base/Input';
 import { Title } from '@components/base/Title';
-import { useRouter } from 'next/router';
-import NavigateButtons from '@components/NavigateButtons';
+import { NavigateButtons } from '@components/NavigateButtons';
+import { useAdvanceStep } from '@hooks/useAdvanceStep';
+import { ActionType, useEnrollmentDispatch, useEnrollmentState } from '@state/Enrollment';
 
 export default function PersonalData(): ReactElement {
-  const router = useRouter();
+  const { handleAdvance } = useAdvanceStep();
+  const dispatch = useEnrollmentDispatch();
+  const state = useEnrollmentState();
 
-  const handleSubmit: React.FormEventHandler = (event) => {
-    event.preventDefault();
-    // TODO: advance steps on state
-    router.push('/enrollment/health-profile');
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const { value, name } = event.target;
+    dispatch({ type: ActionType.UPDATE_GENERAL_DATA, payload: { [name]: value } });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col">
+    <form onSubmit={handleAdvance} className="flex flex-col">
       <Title text="Personal Data" />
       <div className="grid md:gap-8 md:grid-cols-2 md:mb-12">
-        <Input label="Name" id="person-name" />
-        <Input label="Last name" id="person-last-name" />
-        <Input label="Gender" id="person-gender" />
-        <Input label="Birthday" id="person-birthday" type="date" max={new Date().toISOString().slice(0, 10)} />
-        <Input label="Email" id="person-email" type="email" />
-        <Input label="Phone number" id="person-phone-number" />
-        <Input label="Marital status" id="person-marital-status" />
+        <Input label="Name" id="firstName" onChange={handleInputChange} value={state.generalData.firstName} />
+        <Input label="Last name" id="lastName" onChange={handleInputChange} value={state.generalData.lastName} />
+        <Input label="Gender" id="gender" onChange={handleInputChange} value={state.generalData.gender} />
+        <Input
+          label="Birthday"
+          id="birthdate"
+          type="date"
+          max={new Date().toISOString().slice(0, 10)}
+          onChange={handleInputChange}
+          value={state.generalData.birthdate}
+        />
+        <Input label="Email" id="email" type="email" onChange={handleInputChange} value={state.generalData.email} />
+        <Input
+          label="Phone number"
+          id="phoneNumber"
+          onChange={handleInputChange}
+          value={state.generalData.phoneNumber}
+        />
+        <Input
+          label="Marital status"
+          id="maritalStatus"
+          onChange={handleInputChange}
+          value={state.generalData.maritalStatus}
+        />
       </div>
       <Title text="Address" />
       <div className="grid md:gap-8  md:grid-cols-2 ">
-        <Input label="City" id="person-address-city" />
-        <Input label="State" id="person-address-state" />
-        <Input label="Zip" id="person-address-zip-code" />
-        <Input label="Street Address" id="person-address-street" className="md:col-span-2" />
+        <Input label="City" id="city" onChange={handleInputChange} value={state.generalData.city} />
+        <Input label="State" id="state" onChange={handleInputChange} value={state.generalData.state} />
+        <Input label="Zip" id="zipCode" onChange={handleInputChange} value={state.generalData.zipCode} />
+        <Input
+          label="Street Address"
+          id="streetaddress"
+          className="md:col-span-2"
+          onChange={handleInputChange}
+          value={state.generalData.streetaddress}
+        />
       </div>
       <NavigateButtons />
     </form>

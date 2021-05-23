@@ -2,9 +2,11 @@ import { useState, ReactElement } from 'react';
 import { Title } from '@components/base/Title';
 
 import { Subtitle } from '@components/base/Subtitle';
+import { useValidateStep } from '@hooks/useValidateStep';
 
 export default function Confirm(): ReactElement {
   const [accept, setAccept] = useState(false);
+  useValidateStep('Confirm');
 
   return (
     <>
