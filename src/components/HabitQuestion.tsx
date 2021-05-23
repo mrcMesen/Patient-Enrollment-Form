@@ -68,7 +68,7 @@ export const HabitQuestion = ({ question }: Props): ReactElement => {
               id=""
               min="1"
               className="ml-2 max-w-max"
-              value={question?.howMuch}
+              value={question?.howMuch || 0}
               onChange={handleHowMuchChanges}
             />
           </div>
