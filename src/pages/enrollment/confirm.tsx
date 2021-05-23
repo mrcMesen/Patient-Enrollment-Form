@@ -3,10 +3,19 @@ import { Title } from '@components/base/Title';
 
 import { Subtitle } from '@components/base/Subtitle';
 import { useValidateStep } from '@hooks/useValidateStep';
+import { useEnrollmentState } from '@state/Enrollment';
 
 export default function Confirm(): ReactElement {
   const [accept, setAccept] = useState(false);
+  const state = useEnrollmentState();
   useValidateStep('Confirm');
+
+  const handleConfirm = () => {
+    console.log('Assessment FINISHED 🎉');
+    console.log('Current Data');
+    console.log('----------------------------------');
+    console.log(state);
+  };
 
   return (
     <>
@@ -40,7 +49,7 @@ export default function Confirm(): ReactElement {
         className={`btn btn-primary mt-2 ${accept ? 'cursor-pointer' : 'cursor-not-allowed'}`}
         type="button"
         disabled={!accept}
-        onClick={() => console.log('click')}
+        onClick={handleConfirm}
       >
         Confirmar
       </button>
