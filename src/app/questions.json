@@ -1,0 +1,39 @@
+{
+  "habits": [
+    {
+      "question": "Do you smoke any tobacco products?",
+      "answer": "",
+      "How much": "",
+      "answ how oftener": ""
+    },
+    {
+      "question": "Do you drink alcohol?",
+      "answer": "",
+      "How much": "",
+      "answ how oftener": ""
+    },
+    {
+      "question": "Have you regularly used illicit drugs?",
+      "answer": "",
+      "How much": "",
+      "answ how oftener": ""
+    }
+  ],
+  "history": [
+    {
+      "question": "Current medications",
+      "description": "Please, list any medications you are currently taking including non-prescription medications, vitamins and supplements.",
+      "answer": []
+    },
+    {
+      "question": "Medication allergies or reactions",
+      "description": "Please, list any medication allergies or reactions",
+      "answer": []
+    },
+    {
+      "question": "Type of surgeries or reason for hospitalizations",
+      "description": "Please, list any surgeries or hospital stays you have had and their approximate date / year",
+      "answer": []
+    }
+  ]
+}

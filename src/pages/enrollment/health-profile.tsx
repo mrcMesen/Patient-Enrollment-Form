@@ -11,7 +11,7 @@ export default function HealthProfile(): ReactElement {
   const handleSubmit: React.FormEventHandler = (event) => {
     event.preventDefault();
     // TODO: advance steps on state
-    router.push('/enrollment/health-profile');
+    router.push('/enrollment/medical-questions');
   };
 
   return (
