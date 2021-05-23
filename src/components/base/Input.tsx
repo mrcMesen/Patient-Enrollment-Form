@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
   id: string;
+  label?: string;
   type?: 'text' | 'number' | 'email' | 'date';
 }
 /**
@@ -14,7 +14,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Input = ({ label, type = 'text', id, className, ...rest }: Props): ReactElement => {
   return (
     <div className={`py-1 ${className}`}>
-      <div className="relative h-10 mt-2">
+      <div className="relative h-10">
         <input
           id={id}
           type={type}
@@ -23,9 +23,11 @@ export const Input = ({ label, type = 'text', id, className, ...rest }: Props): 
           placeholder=" "
           {...rest}
         />
-        <label htmlFor={id} className="label-input text-gray-500 absolute pointer-events-none block top-2 left-2">
-          {label}
-        </label>
+        {label && (
+          <label htmlFor={id} className="label-input text-gray-500 absolute pointer-events-none block top-2 left-2">
+            {label}
+          </label>
+        )}
         <div className="input-line border-b border-gray-400" />
       </div>
     </div>
