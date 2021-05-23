@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Subtitle } from '@components/base/Subtitle';
+import { Title } from '@components/base/Title';
 import { ConditionCheckbox } from '@components/ConditionCheckbox';
 import { useRouter } from 'next/router';
 
@@ -16,11 +16,11 @@ export default function HealthProfile(): ReactElement {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
-      <Subtitle text="Conditions" />
+      <Title text="Conditions" />
       <div className="grid md:gap-8 md:grid-cols-3 md:mb-12">
         {/* TODO: validar seleccionados */}
-        {conditionsList.map((condition, index) => (
-          <ConditionCheckbox key={condition.condition} condition={{ ...condition, selected: index < 2 }} />
+        {conditionsList.map((condition) => (
+          <ConditionCheckbox key={condition.condition} condition={condition} />
         ))}
       </div>
       <button className="btn-primary self-end mt-8" type="submit">

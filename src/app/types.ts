@@ -3,5 +3,4 @@ export type ConditionTypes = 'cardiovascular' | 'gastrointestinal' | 'psychologi
 export interface Condition {
   type: string;
   condition: string;
-  selected: boolean;
 }
