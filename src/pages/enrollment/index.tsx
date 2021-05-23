@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Input } from '@components/base/Input';
-import { Subtitle } from '@components/base/Subtitle';
+import { Title } from '@components/base/Title';
 import { useRouter } from 'next/router';
 
 export default function PersonalData(): ReactElement {
@@ -14,7 +14,7 @@ export default function PersonalData(): ReactElement {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
-      <Subtitle text="Personal Data" />
+      <Title text="Personal Data" />
       <div className="grid md:gap-8 md:grid-cols-2 md:mb-12">
         <Input label="Name" id="person-name" />
         <Input label="Last name" id="person-last-name" />
@@ -24,7 +24,7 @@ export default function PersonalData(): ReactElement {
         <Input label="Phone number" id="person-phone-number" />
         <Input label="Marital status" id="person-marital-status" />
       </div>
-      <Subtitle text="Address" />
+      <Title text="Address" />
       <div className="grid md:gap-8  md:grid-cols-2 ">
         <Input label="City" id="person-address-city" />
         <Input label="State" id="person-address-state" />

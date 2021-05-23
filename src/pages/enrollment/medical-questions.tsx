@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Subtitle } from '@components/base/Subtitle';
+import { Title } from '@components/base/Title';
 import { useRouter } from 'next/router';
 import { HabitQuestion } from '@components/HabitQuestion';
 
@@ -17,13 +17,13 @@ export default function MedicalQuestions(): ReactElement {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
-      <Subtitle text="Habit" />
+      <Title text="Habit" />
       <div>
         {questions.habits.map((question, index) => (
           <HabitQuestion key={question.question} question={question.question} questionId={index.toString()} />
         ))}
       </div>
-      <Subtitle text="Medical history" />
+      <Title text="Medical history" />
       <div>
         {questions.history.map((question, index) => (
           <MedicalHistoryQuestion
