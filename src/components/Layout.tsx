@@ -11,7 +11,7 @@ export const Layout = ({ children }: { children: ReactNode }): ReactElement => {
       </Head>
       <div className="flex flex-wrap md:justify-end">
         <SideMenu />
-        <main className="w-full md:w-2/3 xl:w-3/4 px-4 md:p-10">{children}</main>
+        <main className="w-full md:w-2/3 xl:w-3/4 pb-4 px-4 md:p-10">{children}</main>
       </div>
     </>
   );

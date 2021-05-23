@@ -41,7 +41,9 @@ export const HabitQuestion = ({ question }: Props): ReactElement => {
   return (
     <div className="mb-4">
       <div className="flex items-center">
-        <label htmlFor={question.question}>{question.question}</label>
+        <label className="w-3/5 md:w-auto" htmlFor={question.question}>
+          {question.question}
+        </label>
         <Select id={question.question} value={question?.answer || ''} onChange={handleMainAnswerChanges} required>
           <option value="">Select</option>
           <option value="yes">Yes</option>

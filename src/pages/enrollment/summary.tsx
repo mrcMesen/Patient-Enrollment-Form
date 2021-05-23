@@ -14,12 +14,12 @@ export default function Summary(): ReactElement {
   return (
     <>
       <Title text="Summary" />
-      <p className="text-gray-500 md:mb-12">
-        Please, review all the information and continue if it is correct, if changes are required you can make them by
-        navigating the menu on the side or using the return button
+      <p className="text-gray-500 mb-8 md:mb-12">
+        Please, review all the information and continue if it is correct, if changes are required you can make them
+        using the return button
       </p>
       <Subtitle text="Personal Data" />
-      <div className="grid md:gap-8 md:grid-cols-3 md:mb-12 md:px-4">
+      <div className="grid gap-4 md:gap-8 grid-cols-2 md:grid-cols-3 mb-8 md:mb-12 md:px-4">
         <DataItem label="First Name" text={state.generalData.firstName || '-'} />
         <DataItem label="Last Name" text={state.generalData.lastName || '-'} />
         <DataItem label="Gender" text={state.generalData.gender || '-'} />
@@ -30,10 +30,14 @@ export default function Summary(): ReactElement {
         <DataItem label="City" text={state.generalData.city || '-'} />
         <DataItem label="State" text={state.generalData.state || '-'} />
         <DataItem label="Zip Code" text={state.generalData.zipCode || '-'} />
-        <DataItem label="Street address" text={state.generalData.streetaddress || '-'} className="col-span-3" />
+        <DataItem
+          label="Street address"
+          text={state.generalData.streetaddress || '-'}
+          className="col-span-2 md:col-span-3"
+        />
       </div>
       <Subtitle text="Conditions" />
-      <div className="grid md:gap-8 md:grid-cols-3 md:mb-12 md:px-4">
+      <div className="grid gap-4 md:gap-8 md:grid-cols-3 mb-8 md:mb-12 md:px-4">
         {state.conditions.length > 0 ? (
           state.conditions.map((condition) => <ConditionCard key={condition.condition} condition={condition} />)
         ) : (
@@ -41,7 +45,7 @@ export default function Summary(): ReactElement {
         )}
       </div>
       <Subtitle text="Habits" />
-      <section className="md:mb-12 md:px-4">
+      <section className="mb-8 md:mb-12 md:px-4">
         {state.habits.map((habit) => (
           <div className="mb-4" key={habit.question}>
             <p>{habit.question}</p>
@@ -60,7 +64,7 @@ export default function Summary(): ReactElement {
         ))}
       </section>
       <Subtitle text="Medical history" />
-      <section className="md:mb-12 md:px-4">
+      <section className="mb-8 md:mb-12 md:px-4">
         {state.history.map((history) => (
           <div className="mb-4" key={history.question}>
             <p className="mb-2">{history.question}</p>

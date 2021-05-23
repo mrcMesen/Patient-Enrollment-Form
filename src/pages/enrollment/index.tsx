@@ -26,7 +26,7 @@ export default function PersonalData(): ReactElement {
   return (
     <form onSubmit={handleAdvance} className="flex flex-col">
       <Title text="Personal Data" />
-      <div className="grid md:gap-8 md:grid-cols-2 md:mb-12">
+      <div className="grid gap-4 md:gap-8 md:grid-cols-2 mb-6 md:mb-12">
         <Input required label="Name" id="firstName" onChange={handleInputChange} value={state.generalData.firstName} />
         <Input
           required
@@ -78,7 +78,7 @@ export default function PersonalData(): ReactElement {
         </Select>
       </div>
       <Title text="Address" />
-      <div className="grid md:gap-8  md:grid-cols-2 ">
+      <div className="grid gap-4 md:gap-8  md:grid-cols-2 ">
         <Input required label="City" id="city" onChange={handleInputChange} value={state.generalData.city} />
         <Input required label="State" id="state" onChange={handleInputChange} value={state.generalData.state} />
         <Input required label="Zip" id="zipCode" onChange={handleInputChange} value={state.generalData.zipCode} />

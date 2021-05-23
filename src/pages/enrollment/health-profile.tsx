@@ -14,7 +14,7 @@ export default function HealthProfile(): ReactElement {
   return (
     <form onSubmit={handleAdvance} className="flex flex-col">
       <Title text="Conditions" />
-      <div className="grid md:gap-8 md:grid-cols-3 md:mb-12">
+      <div className="grid gap-4 md:gap-8 md:grid-cols-3 md:mb-12">
         {conditionsList().map((condition) => (
           <ConditionCheckbox key={condition.condition} condition={condition} />
         ))}
