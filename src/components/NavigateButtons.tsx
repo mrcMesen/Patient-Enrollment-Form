@@ -12,8 +12,10 @@ export const NavigateButtons = ({ back, href }: Props): ReactElement => {
   const dispatch = useEnrollmentDispatch();
 
   const handleAdvance = () => {
-    dispatch({ type: ActionType.ADVANCE_STEP });
-    href && router.push(href);
+    if (href) {
+      dispatch({ type: ActionType.ADVANCE_STEP });
+      router.push(href);
+    }
   };
   const handleBack = () => {
     dispatch({ type: ActionType.BACK_STEP });

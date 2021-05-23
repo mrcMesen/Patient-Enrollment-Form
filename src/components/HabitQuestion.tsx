@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Select } from './base/Select';
 import { Input } from './base/Input';
-import { Frequency, HabitQuestion as HabitQuestionType } from '@app/types';
+import { FrequencyType, HabitQuestion as HabitQuestionType } from '@app/types';
 import { ActionType, useEnrollmentDispatch } from '@state/Enrollment';
 
 interface Props {
@@ -26,7 +26,7 @@ export const HabitQuestion = ({ question }: Props): ReactElement => {
     const { value } = event.target;
     dispatch({
       type: ActionType.ADD_HABIT_QUESTION,
-      payload: { ...question, howOften: value as Frequency },
+      payload: { ...question, howOften: value as FrequencyType },
     });
   };
 

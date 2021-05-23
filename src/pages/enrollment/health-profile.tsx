@@ -13,7 +13,6 @@ export default function HealthProfile(): ReactElement {
   useValidateStep('Health profile');
   const { conditionsList, handleFilter } = useConditionList();
   const { handleAdvance } = useAdvanceStep();
-  console.log('conditions', conditionsList);
 
   return (
     <form onSubmit={handleAdvance} className="flex flex-col">
