@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
+import { useEnrollmentState } from '@state/Enrollment';
 
 interface Props {
   itemNumber: number;
@@ -6,8 +7,11 @@ interface Props {
 }
 
 export const SideMenuItem = ({ itemNumber, title }: Props): ReactElement => {
-  // TODO: Validate state
-  const isActive = itemNumber < 2;
+  const state = useEnrollmentState();
+
+  const isActive = useMemo(() => {
+    return itemNumber < state.step;
+  }, [state.step]);
 
   return (
     <div className="flex items-center mb-4">

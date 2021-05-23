@@ -1,7 +1,6 @@
-import React, { ReactElement } from 'react';
+import { steps } from '@app/types';
+import { ReactElement } from 'react';
 import { SideMenuItem } from './SideMenuItem';
-
-const steps = ['General data', 'Health profile', 'Medical questions', 'Summary', 'Confirm'];
 
 export const SideMenu = (): ReactElement => {
   return (
@@ -11,7 +10,7 @@ export const SideMenu = (): ReactElement => {
         <p className="text-gray-300">Patient Enrollment</p>
       </div>
       <div className="flex-1">
-        {[steps.map((step, index) => <SideMenuItem key={step} itemNumber={index} title={step} />)]}
+        {[steps.map((step, index) => <SideMenuItem key={step.step} itemNumber={index} title={step.step} />)]}
       </div>
       <div>Marco Mesen - Assessment</div>
     </section>
