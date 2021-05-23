@@ -4,6 +4,9 @@ import { Title } from '@components/base/Title';
 import { NavigateButtons } from '@components/NavigateButtons';
 import { useAdvanceStep } from '@hooks/useAdvanceStep';
 import { ActionType, useEnrollmentDispatch, useEnrollmentState } from '@state/Enrollment';
+import { Select } from '@components/base/Select';
+
+const maritalOptions = ['Married', 'Single', 'Divorced', 'Life Partner', 'Separated', 'Widowed', 'Other'];
 
 export default function PersonalData(): ReactElement {
   const { handleAdvance } = useAdvanceStep();
@@ -15,14 +18,26 @@ export default function PersonalData(): ReactElement {
     dispatch({ type: ActionType.UPDATE_GENERAL_DATA, payload: { [name]: value } });
   };
 
+  const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const { value } = event.target;
+    dispatch({ type: ActionType.UPDATE_GENERAL_DATA, payload: { maritalStatus: value } });
+  };
+
   return (
     <form onSubmit={handleAdvance} className="flex flex-col">
       <Title text="Personal Data" />
       <div className="grid md:gap-8 md:grid-cols-2 md:mb-12">
-        <Input label="Name" id="firstName" onChange={handleInputChange} value={state.generalData.firstName} />
-        <Input label="Last name" id="lastName" onChange={handleInputChange} value={state.generalData.lastName} />
-        <Input label="Gender" id="gender" onChange={handleInputChange} value={state.generalData.gender} />
+        <Input required label="Name" id="firstName" onChange={handleInputChange} value={state.generalData.firstName} />
         <Input
+          required
+          label="Last name"
+          id="lastName"
+          onChange={handleInputChange}
+          value={state.generalData.lastName}
+        />
+        <Input required label="Gender" id="gender" onChange={handleInputChange} value={state.generalData.gender} />
+        <Input
+          required
           label="Birthday"
           id="birthdate"
           type="date"
@@ -30,26 +45,45 @@ export default function PersonalData(): ReactElement {
           onChange={handleInputChange}
           value={state.generalData.birthdate}
         />
-        <Input label="Email" id="email" type="email" onChange={handleInputChange} value={state.generalData.email} />
         <Input
+          required
+          label="Email"
+          id="email"
+          type="email"
+          onChange={handleInputChange}
+          value={state.generalData.email}
+        />
+        <Input
+          required
           label="Phone number"
           id="phoneNumber"
           onChange={handleInputChange}
           value={state.generalData.phoneNumber}
         />
-        <Input
-          label="Marital status"
+        <Select
+          required
           id="maritalStatus"
-          onChange={handleInputChange}
           value={state.generalData.maritalStatus}
-        />
+          onChange={handleSelectChange}
+          className={`w-full ${state.generalData.maritalStatus === '' && 'text-gray-500'}`}
+        >
+          <option className="" value="">
+            Marital status
+          </option>
+          {maritalOptions.map((option) => (
+            <option key={option} value={option} className="capitalize">
+              {option}
+            </option>
+          ))}
+        </Select>
       </div>
       <Title text="Address" />
       <div className="grid md:gap-8  md:grid-cols-2 ">
-        <Input label="City" id="city" onChange={handleInputChange} value={state.generalData.city} />
-        <Input label="State" id="state" onChange={handleInputChange} value={state.generalData.state} />
-        <Input label="Zip" id="zipCode" onChange={handleInputChange} value={state.generalData.zipCode} />
+        <Input required label="City" id="city" onChange={handleInputChange} value={state.generalData.city} />
+        <Input required label="State" id="state" onChange={handleInputChange} value={state.generalData.state} />
+        <Input required label="Zip" id="zipCode" onChange={handleInputChange} value={state.generalData.zipCode} />
         <Input
+          required
           label="Street Address"
           id="streetaddress"
           className="md:col-span-2"

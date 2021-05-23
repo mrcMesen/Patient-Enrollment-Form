@@ -2,6 +2,7 @@ import React, { ReactElement, ReactNode } from 'react';
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
   id: string;
+  className?: string;
   children: ReactNode;
 }
 
@@ -10,9 +11,9 @@ interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
  * @param id Input id, using to link svg caret
  * @param children Options list to display inside Select
  */
-export const Select = ({ id, children, ...rest }: Props): ReactElement => {
+export const Select = ({ id, className, children, ...rest }: Props): ReactElement => {
   return (
-    <div className="relative max-w-max m-2">
+    <div className={`relative px-1${className}`}>
       <label className="absolute right-1 top-1.5" htmlFor={id}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +31,7 @@ export const Select = ({ id, children, ...rest }: Props): ReactElement => {
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </label>
-      <select id={id} className="relative pl-2 pr-8 py-1 text-gray-800" {...rest}>
+      <select id={id} className="relative pl-2 pr-8 py-1 w-full" {...rest}>
         {children}
       </select>
     </div>
