@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { useValidateStep } from '@hooks/useValidateStep';
 import { useAdvanceStep } from '@hooks/useAdvanceStep';
 
@@ -13,12 +13,16 @@ export default function MedicalQuestions(): ReactElement {
   const state = useEnrollmentState();
   const { handleAdvance } = useAdvanceStep();
 
+  const orderQuestions = useMemo(() => {
+    return state.habits.sort((a, b) => (a.question > b.question ? 1 : b.question > a.question ? -1 : 0));
+  }, [state.habits]);
+
   return (
     <form onSubmit={handleAdvance} className="flex flex-col">
       <Title text="Habit" />
       <div>
-        {state.habits.map((question, index) => (
-          <HabitQuestion key={question.question} question={question.question} questionId={index.toString()} />
+        {orderQuestions.map((question) => (
+          <HabitQuestion key={question.question} question={question} />
         ))}
       </div>
       <Title text="Medical history" />

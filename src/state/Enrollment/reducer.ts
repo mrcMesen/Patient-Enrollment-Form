@@ -20,7 +20,13 @@ export const Reducer = (state: State, action: Action): State => {
         conditions: state.conditions.filter((condition) => condition.condition !== action.payload.condition),
       };
     case ActionType.ADD_HABIT_QUESTION:
-      return { ...state, habits: [...state.habits, action.payload] };
+      return {
+        ...state,
+        // habits: [...state.habits.filter((iHabit) => iHabit.question !== action.payload.question), action.payload],
+        habits: [
+          ...state.habits.map((iHabit) => (iHabit.question === action.payload.question ? action.payload : iHabit)),
+        ],
+      };
     case ActionType.ADD_HISTORY_QUESTION:
       return {
         ...state,

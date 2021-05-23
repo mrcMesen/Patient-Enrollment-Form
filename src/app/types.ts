@@ -29,17 +29,12 @@ export interface Condition {
   type: ConditionTypes;
   condition: string;
 }
-export type HabitQuestion =
-  | {
-      question: string;
-      answer?: 'no';
-    }
-  | {
-      question: string;
-      answer: 'yes';
-      howMuch: number;
-      howOften: Frequency;
-    };
+export type HabitQuestion = {
+  question: string;
+  answer?: 'no' | 'yes';
+  howMuch?: number;
+  howOften?: Frequency | '';
+};
 export interface HistoryQuestion {
   question: string;
   description: string;

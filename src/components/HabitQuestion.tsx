@@ -1,39 +1,78 @@
 import { ReactElement } from 'react';
 import { Select } from './base/Select';
 import { Input } from './base/Input';
+import { Frequency, HabitQuestion as HabitQuestionType } from '@app/types';
+import { ActionType, useEnrollmentDispatch } from '@state/Enrollment';
 
 interface Props {
-  question: string;
-  questionId: string;
+  question: HabitQuestionType;
 }
 
-export const HabitQuestion = ({ question, questionId }: Props): ReactElement => {
+export const HabitQuestion = ({ question }: Props): ReactElement => {
+  const dispatch = useEnrollmentDispatch();
+
+  const handleMainAnswerChanges: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const { value } = event.target;
+    if (value === 'yes' || value === 'no') {
+      dispatch({
+        type: ActionType.ADD_HABIT_QUESTION,
+        payload: { ...question, answer: value, howMuch: 0, howOften: '' },
+      });
+    } else {
+      dispatch({ type: ActionType.ADD_HABIT_QUESTION, payload: { question: question.question, answer: undefined } });
+    }
+  };
+  const handleHowOftenChanges: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const { value } = event.target;
+    dispatch({
+      type: ActionType.ADD_HABIT_QUESTION,
+      payload: { ...question, howOften: value as Frequency },
+    });
+  };
+
+  const handleHowMuchChanges: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const { value } = event.target;
+    dispatch({
+      type: ActionType.ADD_HABIT_QUESTION,
+      payload: { ...question, howMuch: parseInt(value) },
+    });
+  };
+
   return (
     <div className="mb-4">
       <div className="flex items-center">
-        <label htmlFor={questionId}>{question}</label>
-        <Select id={questionId}>
+        <label htmlFor={question.question}>{question.question}</label>
+        <Select id={question.question} value={question?.answer || ''} onChange={handleMainAnswerChanges} required>
           <option value="">Select</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </Select>
       </div>
-      {/* TODO: connect state to handle how much and how often */}
-      <div className="ml-8">
-        <div className="inline-flex items-center">
-          How often{' '}
-          <Select id="">
-            <option value="">Select</option>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-            <option value="yearly">Yearly</option>
-          </Select>
+      {question?.answer && question.answer === 'yes' ? (
+        <div className="ml-8">
+          <div className="inline-flex items-center">
+            How often{' '}
+            <Select id="" value={question?.howOften || ''} onChange={handleHowOftenChanges} required>
+              <option value="">Select</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
+            </Select>
+          </div>
+          <div className="inline-flex items-center">
+            How much{' '}
+            <Input
+              required
+              type="number"
+              id=""
+              className="ml-2 max-w-max"
+              value={question?.howMuch}
+              onChange={handleHowMuchChanges}
+            />
+          </div>
         </div>
-        <div className="inline-flex items-center">
-          How much <Input type="number" id="" className="ml-2 max-w-max" />
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 };
