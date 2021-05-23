@@ -1,32 +1,29 @@
 import { ReactElement } from 'react';
-import { Title } from '@components/base/Title';
-import { useRouter } from 'next/router';
-import { HabitQuestion } from '@components/HabitQuestion';
+import { useValidateStep } from '@hooks/useValidateStep';
+import { useAdvanceStep } from '@hooks/useAdvanceStep';
 
-import questions from '@app/questions.json';
+import { Title } from '@components/base/Title';
+import { HabitQuestion } from '@components/HabitQuestion';
 import { MedicalHistoryQuestion } from '@components/MedicalHistoryQuestion';
-import NavigateButtons from '@components/NavigateButtons';
+import { NavigateButtons } from '@components/NavigateButtons';
+import { useEnrollmentState } from '@state/Enrollment';
 
 export default function MedicalQuestions(): ReactElement {
-  const router = useRouter();
-
-  const handleSubmit: React.FormEventHandler = (event) => {
-    event.preventDefault();
-    // TODO: advance steps on state
-    router.push('/enrollment/summary');
-  };
+  useValidateStep('Medical questions');
+  const state = useEnrollmentState();
+  const { handleAdvance } = useAdvanceStep();
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col">
+    <form onSubmit={handleAdvance} className="flex flex-col">
       <Title text="Habit" />
       <div>
-        {questions.habits.map((question, index) => (
+        {state.habits.map((question, index) => (
           <HabitQuestion key={question.question} question={question.question} questionId={index.toString()} />
         ))}
       </div>
       <Title text="Medical history" />
       <div>
-        {questions.history.map((question, index) => (
+        {state.history.map((question, index) => (
           <MedicalHistoryQuestion
             key={question.question}
             question={question.question}

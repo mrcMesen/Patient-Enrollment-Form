@@ -31,6 +31,7 @@ export default function Confirm(): ReactElement {
           id="termsAndConditions"
           type="checkbox"
           className="h-4 w-4 mr-2"
+          checked={accept}
           onChange={() => setAccept((prev) => !prev)}
         />
         <label htmlFor="termsAndConditions">Accept terms and conditions</label>
