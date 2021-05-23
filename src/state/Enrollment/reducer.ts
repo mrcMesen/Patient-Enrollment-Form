@@ -22,7 +22,6 @@ export const Reducer = (state: State, action: Action): State => {
     case ActionType.ADD_HABIT_QUESTION:
       return {
         ...state,
-        // habits: [...state.habits.filter((iHabit) => iHabit.question !== action.payload.question), action.payload],
         habits: [
           ...state.habits.map((iHabit) => (iHabit.question === action.payload.question ? action.payload : iHabit)),
         ],
@@ -31,22 +30,24 @@ export const Reducer = (state: State, action: Action): State => {
       return {
         ...state,
         history: [
-          ...state.history,
-          {
-            ...state.history[action.payload.question],
-            answer: [...state.history[action.payload.question].answer, action.payload.answer],
-          },
+          ...state.history.map((iHistory, index) => {
+            if (index === action.payload.question) {
+              return { ...iHistory, answer: [...iHistory.answer, action.payload.answer] };
+            }
+            return iHistory;
+          }),
         ],
       };
     case ActionType.REMOVE_HISTORY_QUESTION:
       return {
         ...state,
         history: [
-          ...state.history,
-          {
-            ...state.history[action.payload.question],
-            answer: state.history[action.payload.question].answer.filter((answer) => answer !== action.payload.answer),
-          },
+          ...state.history.map((iHistory, index) => {
+            if (index === action.payload.question) {
+              return { ...iHistory, answer: iHistory.answer.filter((answer) => answer !== action.payload.answer) };
+            }
+            return iHistory;
+          }),
         ],
       };
 

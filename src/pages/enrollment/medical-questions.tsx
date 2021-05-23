@@ -28,12 +28,7 @@ export default function MedicalQuestions(): ReactElement {
       <Title text="Medical history" />
       <div>
         {state.history.map((question, index) => (
-          <MedicalHistoryQuestion
-            key={question.question}
-            question={question.question}
-            questionId={index.toString()}
-            description={question.description}
-          />
+          <MedicalHistoryQuestion key={question.question} question={question} questionId={index} />
         ))}
       </div>
       <NavigateButtons back />
