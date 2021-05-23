@@ -6,5 +6,5 @@ interface Props {
 }
 
 export const Subtitle = ({ text, className }: Props): ReactElement => {
-  return <h4 className={`text-2xl my-4 ${className}`}>{text}</h4>;
+  return <h4 className={`text-lg my-2 text-gray-600 ${className}`}>{text}</h4>;
 };
