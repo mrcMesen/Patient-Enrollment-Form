@@ -32,7 +32,7 @@ export const SideMenuItem = ({ itemNumber, title }: Props): ReactElement => {
             <path d="M5 12l5 5l10 -10" />
           </svg>
         ) : (
-          itemNumber
+          itemNumber + 1
         )}
       </div>
       <span className="ml-4">{title}</span>
