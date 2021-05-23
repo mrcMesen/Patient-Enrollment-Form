@@ -27,12 +27,12 @@ export const MedicalHistoryQuestion = ({ question, description, questionId }: Pr
           +
         </button>
       </form>
-      <div className="flex flex-wrap h-10">
+      <div className="flex flex-wrap">
         {/* Connect to state */}
         <button
           type="button"
           onClick={handleDelete}
-          className="bg-gray-500 text-white text-sm flex-full-center rounded-lg px-2"
+          className="bg-gray-500 text-white text-sm flex-full-center rounded-lg px-2 py-1 mx-1"
         >
           response
         </button>
