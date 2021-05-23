@@ -16,7 +16,7 @@ export const HabitQuestion = ({ question }: Props): ReactElement => {
     if (value === 'yes' || value === 'no') {
       dispatch({
         type: ActionType.ADD_HABIT_QUESTION,
-        payload: { ...question, answer: value, howMuch: 0, howOften: '' },
+        payload: { ...question, answer: value },
       });
     } else {
       dispatch({ type: ActionType.ADD_HABIT_QUESTION, payload: { question: question.question, answer: undefined } });
@@ -66,6 +66,7 @@ export const HabitQuestion = ({ question }: Props): ReactElement => {
               required
               type="number"
               id=""
+              min="1"
               className="ml-2 max-w-max"
               value={question?.howMuch}
               onChange={handleHowMuchChanges}
