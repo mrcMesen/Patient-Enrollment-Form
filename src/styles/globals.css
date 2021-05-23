@@ -39,7 +39,13 @@
   .input:focus ~ .input-line {
     @apply border-gray-700;
   }
+  .btn {
+    @apply px-6 py-2 text-white rounded;
+  }
   .btn-primary {
-    @apply bg-green-900 px-6 py-2 text-white rounded;
+    @apply bg-green-900;
+  }
+  .btn-secondary {
+    @apply bg-gray-600;
   }
 }

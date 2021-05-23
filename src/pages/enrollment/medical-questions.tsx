@@ -5,6 +5,7 @@ import { HabitQuestion } from '@components/HabitQuestion';
 
 import questions from '@app/questions.json';
 import { MedicalHistoryQuestion } from '@components/MedicalHistoryQuestion';
+import NavigateButtons from '@components/NavigateButtons';
 
 export default function MedicalQuestions(): ReactElement {
   const router = useRouter();
@@ -34,9 +35,7 @@ export default function MedicalQuestions(): ReactElement {
           />
         ))}
       </div>
-      <button className="btn-primary self-end mt-8" type="submit">
-        Continuar
-      </button>
+      <NavigateButtons back />
     </form>
   );
 }

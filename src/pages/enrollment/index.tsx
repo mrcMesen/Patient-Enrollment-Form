@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import { Input } from '@components/base/Input';
 import { Title } from '@components/base/Title';
 import { useRouter } from 'next/router';
+import NavigateButtons from '@components/NavigateButtons';
 
 export default function PersonalData(): ReactElement {
   const router = useRouter();
@@ -31,9 +32,7 @@ export default function PersonalData(): ReactElement {
         <Input label="Zip" id="person-address-zip-code" />
         <Input label="Street Address" id="person-address-street" className="md:col-span-2" />
       </div>
-      <button className="btn-primary self-end mt-8" type="submit">
-        Continuar
-      </button>
+      <NavigateButtons />
     </form>
   );
 }

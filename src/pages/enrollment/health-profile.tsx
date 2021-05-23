@@ -4,6 +4,7 @@ import { ConditionCheckbox } from '@components/ConditionCheckbox';
 import { useRouter } from 'next/router';
 
 import conditionsList from '@app/conditions.json';
+import NavigateButtons from '@components/NavigateButtons';
 
 export default function HealthProfile(): ReactElement {
   const router = useRouter();
@@ -23,9 +24,7 @@ export default function HealthProfile(): ReactElement {
           <ConditionCheckbox key={condition.condition} condition={condition} />
         ))}
       </div>
-      <button className="btn-primary self-end mt-8" type="submit">
-        Continuar
-      </button>
+      <NavigateButtons back />
     </form>
   );
 }

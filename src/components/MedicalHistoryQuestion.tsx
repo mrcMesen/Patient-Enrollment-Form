@@ -23,7 +23,7 @@ export const MedicalHistoryQuestion = ({ question, description, questionId }: Pr
       <span className="text-sm text-gray-500">{description}</span>
       <form className="max-w-max flex items-center" onSubmit={handleAdd}>
         <Input id={questionId} className="" placeholder={question} required />
-        <button type="submit" className="btn-primary rounded-full h-8 w-8 p-0">
+        <button type="submit" className="btn btn-primary rounded-full h-8 w-8 p-0">
           +
         </button>
       </form>

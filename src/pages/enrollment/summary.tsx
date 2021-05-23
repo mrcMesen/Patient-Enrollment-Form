@@ -1,14 +1,12 @@
 import { ReactElement } from 'react';
 import { Title } from '@components/base/Title';
-import { useRouter } from 'next/router';
 
 import { Subtitle } from '@components/base/Subtitle';
 import { DataItem } from '@components/base/DataItem';
 import { ConditionCard } from '@components/ConditionCard';
+import NavigateButtons from '@components/NavigateButtons';
 
 export default function Summary(): ReactElement {
-  const router = useRouter();
-
   return (
     <>
       <Title text="Summary" />
@@ -82,10 +80,7 @@ export default function Summary(): ReactElement {
           ))}
         </div>
       </section>
-
-      <button className="btn-primary self-end mt-8" type="button" onClick={() => router.push('/enrollment/summary')}>
-        Confirmar
-      </button>
+      <NavigateButtons back href="/enrollment/confirm" />
     </>
   );
 }
