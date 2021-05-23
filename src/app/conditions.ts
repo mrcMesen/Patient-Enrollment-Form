@@ -1,6 +1,6 @@
 import { Condition } from './types';
 
-export const conditionsList = (): Condition[] => [
+export const initialConditionsList = (): Condition[] => [
   {
     type: 'cardiovascular',
     condition: 'High blood pressure',

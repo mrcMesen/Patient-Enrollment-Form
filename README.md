@@ -3,9 +3,13 @@
 Developed by Marco Mesén - [marcomesen.com](https://marcomesen.com)
 For Parsley Health
 
-## Image Demo
+## Image Demo - Full Screen
 
-![Image Demo](./demo/demo.png)
+![Full Screen Demo](./demo/demo.png)
+
+## Image Demo - Responsive (Mobile)
+
+![Responsive Demo](./demo/demo-responsive.png)
 
 ## Technologies used
 

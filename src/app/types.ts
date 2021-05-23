@@ -1,7 +1,11 @@
-export type ConditionTypes = 'cardiovascular' | 'gastrointestinal' | 'psychological' | 'other';
-export type Frequency = 'daily' | 'weekly' | 'monthly' | 'yearly';
-export type Steps = 'General data' | 'Health profile' | 'Medical questions' | 'Summary' | 'Confirm';
+type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<infer ElementType> ? ElementType : never;
 
+export const conditions = ['cardiovascular', 'gastrointestinal', 'psychological', 'other'] as const;
+export type ConditionType = ElementType<typeof conditions>;
+export const frequencies = ['daily', 'weekly', 'monthly', 'yearly'] as const;
+export type FrequencyType = ElementType<typeof frequencies>;
+
+export type Steps = 'General data' | 'Health profile' | 'Medical questions' | 'Summary' | 'Confirm';
 export const steps: { step: Steps; path: string }[] = [
   {
     step: 'General data',
@@ -26,14 +30,14 @@ export const steps: { step: Steps; path: string }[] = [
 ];
 
 export interface Condition {
-  type: ConditionTypes;
+  type: ConditionType;
   condition: string;
 }
 export type HabitQuestion = {
   question: string;
   answer?: 'no' | 'yes';
   howMuch?: number;
-  howOften?: Frequency | '';
+  howOften?: FrequencyType | '';
 };
 export interface HistoryQuestion {
   question: string;

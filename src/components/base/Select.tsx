@@ -13,7 +13,7 @@ interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
  */
 export const Select = ({ id, className, children, ...rest }: Props): ReactElement => {
   return (
-    <div className={`relative px-1${className}`}>
+    <div className={`relative px-1 ${className}`}>
       <label className="absolute right-1 top-1.5" htmlFor={id}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export const Select = ({ id, className, children, ...rest }: Props): ReactElemen
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </label>
-      <select id={id} className="relative pl-2 pr-8 py-1 w-full" {...rest}>
+      <select id={id} className="relative pl-2 pr-8 py-1 w-full capitalize" {...rest}>
         {children}
       </select>
     </div>
