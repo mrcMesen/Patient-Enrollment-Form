@@ -12,5 +12,5 @@ export const useValidateStep = (step: Steps): void => {
     if (state.step < index) {
       router.push(steps[index - 1].path);
     }
-  }, []);
+  }, [router.pathname]);
 };

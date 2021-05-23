@@ -14,7 +14,7 @@ interface Props {
 export const DataItem = ({ label, text, className = '' }: Props): ReactElement => {
   return (
     <div className={className}>
-      <span className="text-sm italic font-extralight ml-1">{label}</span>
+      <span className="text-sm italic font-extralight ml-1 capitalize">{label}</span>
       <p className="my-1 font-bold">{text}</p>
     </div>
   );
